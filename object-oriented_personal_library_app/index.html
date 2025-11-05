@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Library App</title>
+</head>
+<body>
+  <h1>Personal Library</h1>
+  <div id="registerSection">
+    <h2>Register</h2>
+    <input id="regUsernameInput" type="text" placeholder="Username">
+    <input id="regPasswordInput" type="password" placeholder="Password">
+    <button id="registerButton">Register</button>
+  </div>
+  <div id="loginSection">
+    <h2>Login</h2>
+    <input id="loginUsernameInput" type="text" placeholder="Username">
+    <input id="loginPasswordInput" type="password" placeholder="Password">
+    <button id="loginButton">Login</button>
+  </div>
+  <div id="librarySection" style="display:none;">
+    <h2>Your Library</h2>
+    <ul id="bookList"></ul>
+    <button id="addBookButton">Add Book</button>
+    <button id="addFilmButton">Add Film</button>
+  </div>
+  <script type="module" src="presentation.js"></script>
+</body>
+</html>
