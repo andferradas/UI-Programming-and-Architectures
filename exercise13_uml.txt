@@ -1,0 +1,20 @@
+[Student]<>-tickets*>[EventTicket]
+[StudentEvent]++-1..*>[EventTicket]
+[EventOwner]1-0..*>[StudentEvent]
+[StudentEvent]^[SportingEvent]
+[StudentEvent]^[ClubMeetingEvent]
+[StudentEvent]^[ConcertEvent]
+
+[Student|-name;+username;-password|login(username,password); buyTicket(event);]
+
+[EventTicket|-id;-QR;|showTicket();]
+
+[StudentEvent|+name;+date;+price;+place;-amountOfStudents;+maxAmountOfStudents;+duration|showDetails();getAvailability();]
+
+[EventOwner|+name|createEvent(name,date,...); deleteEvent(name);updateEvent(name,date,...);]
+
+[SportingEvent|+typeOfSport;+necessaryMaterial[];+score;|showFinalScore();]
+
+[ClubMeetingEvent|+clubName;+topic;|changeTopic(topic);]
+
+[ConcertEvent|+musicType;+artists[];|getArtists();]

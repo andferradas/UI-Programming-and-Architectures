@@ -1,0 +1,73 @@
+// Adapted from "Eloquent Javascript Chapter 6 - Secret Life of Objects
+
+console.log("Testing Javascript classes\n")
+
+//Example Javascript code to define a class
+class Rabbit {
+//The constructor is the method that is called when an object is created using the class
+    constructor(kindOfRabbit) {
+      this.kindOfRabbit = kindOfRabbit;
+    }
+    speak(line) {
+      console.log(`The ${this.kindOfRabbit} rabbit says '${line}'`);
+    }
+  }
+
+// The 'new' command creates a new object of class Rabbit
+let killerRabbit = new Rabbit("killer")
+killerRabbit.speak("Watch out")
+
+// We can create a 2nd rabbit object of the same class
+let loonyTunesRabbit = new Rabbit("loony tunes")
+loonyTunesRabbit.speak("What's up doc?")
+
+console.log("\nTesting Javascript class inheritance\n")
+
+// Example Javascript code to extend a class (i.e. make a subclass)
+
+//The superclass or base class
+class LinkedList {
+    constructor(value, rest) {
+      this.value = value;
+      this.rest = rest;
+    }
+  
+    get length() {
+      return 1 + (this.rest ? this.rest.length : 0);
+    }
+    
+    //This is called a static method and can be called from a class instead of an object
+    //This method gives us another way to create an object
+    static fromArray(array) {
+      let result = null;
+      for (let i = array.length - 1; i >= 0; i--) {
+        result = new this(array[i], result);
+      }
+      return result;
+    }
+  }
+
+//The subclass
+class DoubleLinkedList extends LinkedList {
+    #length;
+  
+    constructor(value, rest) {
+      super(value, rest);
+      this.#length = super.length;
+    }
+  
+  // Method to double all entries in the list
+    doubleEntries() {
+        let current = this;
+        while (current) {
+            current.value *= 2;
+            current = current.rest;
+    }
+  }
+}
+
+let testlist = DoubleLinkedList.fromArray([1,2,3])
+console.log("Initial testlist\n", testlist)
+
+testlist.doubleEntries()
+console.log("After Doubling the entries\n", testlist)

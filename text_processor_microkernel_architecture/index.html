@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Text Processing Workbench</title>
+</head>
+<body>
+  <h1>Text Processing Workbench</h1>
+  <textarea id="input" rows="5" cols="40" placeholder="Enter text here"></textarea>
+  <br><br>
+  <select id="pluginSelect" multiple></select>
+  <p id="pluginDescription"></p>
+  <button onclick="applyPlugin()">Run</button>
+  <h2>Output</h2>
+  <div id="output"></div>
+  <script src="kernel.js"></script>
+  <!-- Static Plugin Loading
+  <script src="plugin_wordcount.js"></script>
+  <script src="plugin_reverse.js"></script>
+  <script src="plugin_sentiment.js"></script>
+  <script src="plugin_charfreq.js"></script>
+  -->
+  <script>
+  
+    // Populate dropdown
+    const select = document.getElementById("pluginSelect");
+    const description = document.getElementById("pluginDescription");
+
+    // Empty initial select
+    const emptyOption = document.createElement("option");
+    emptyOption.value = "";
+    emptyOption.textContent = "-- Select a Plugin --";
+    select.appendChild(emptyOption);
+
+    getPlugins().forEach(name => {
+      const option = document.createElement("option");
+      option.value = name;
+      option.textContent = name;
+      select.appendChild(option);
+    });
+
+    select.addEventListener("change", () => {
+      const pluginName = select.value;
+      description.textContent = getPluginDescription(pluginName);
+    });
+
+    // Additional -> multiple choice
+    /*
+     * Multiple choices can be applicated in a row
+     */
+    function applyPlugin() {
+      const text = document.getElementById("input").value;
+      const selected = Array.from(select.selectedOptions).map(o => o.value);
+      if (selected.length === 0) {
+        alert("Please select a plugin.");
+        return;
+      }
+      loadPlugins(selected, () => {
+        processTextWithPlugins(text, selected);
+      });
+      let result = text;
+      selected.forEach(name => {
+        result = runPlugin(name, result);
+      });
+      document.getElementById("output").innerHTML = result.replace(/\n/g, "<br>");  
+    }
+    
+    // Additional
+    /*
+    * Load a plug only when needed. (Dynamic Plugin)
+    */
+    function loadPlugin(name, callback) {
+      const script = document.createElement("script");
+      script.src = `plugin_${name.toLowerCase()}.js`;
+      script.onload = callback;
+      document.body.appendChild(script);
+    }
+        
+  </script>
+</body>
+</html>
