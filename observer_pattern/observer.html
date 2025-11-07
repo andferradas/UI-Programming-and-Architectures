@@ -1,0 +1,138 @@
+<!-- 
+ This code has been adapted from the observer pattern example code https://www.patterns.dev/vanilla/observer-pattern/
+ The code from the website uses react, whereas this version works with vanilla javascript. 
+ To see the observers in action see the notifications that appear on the screen, as well as the notifications in the console logger
+ 
+ You can see the consol log output by pressing "F12" in your browser to open up the developer tools, and then clicking on "console"
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observer Pattern Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="observer-pattern.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Observer Pattern Demo</h1>
+        <p class="description">
+            This example demonstrates the Observer pattern using vanilla JavaScript.
+            Click the button or toggle the switch to see the observers in action.
+        </p>
+        
+        <button class="button" id="clickButton">Click me!</button>
+        
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" id="toggleSwitch">
+                <span class="slider"></span>
+            </label>
+            <span class="switch-label">Toggle me!</span>
+        </div>
+        
+        <div class="observer-count">
+            Active observers: <span id="observerCount">2</span>
+        </div>
+        
+        <div class="code-block">
+            <pre>// Observable class implementation
+class Observable {
+    constructor() {
+        this.observers = [];
+    }
+
+    subscribe(f) {
+        this.observers.push(f);
+        this.updateObserverCount();
+    }
+
+    unsubscribe(f) {
+        this.observers = this.observers.filter(subscriber => subscriber !== f);
+        this.updateObserverCount();
+    }
+
+    notify(data) {
+        this.observers.forEach(observer => observer(data));
+    }
+
+    updateObserverCount() {
+        document.getElementById('observerCount').textContent = this.observers.length;
+    }
+}
+
+// Create observable instance
+const observable = new Observable();</pre>
+        </div>
+    </div>
+    
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Observable class implementation
+        class Observable {
+            constructor() {
+                this.observers = [];
+            }
+
+            subscribe(f) {
+                this.observers.push(f);
+                this.updateObserverCount();
+            }
+
+            unsubscribe(f) {
+                this.observers = this.observers.filter(subscriber => subscriber !== f);
+                this.updateObserverCount();
+            }
+
+            notify(data) {
+                this.observers.forEach(observer => observer(data));
+            }
+
+            updateObserverCount() {
+                document.getElementById('observerCount').textContent = this.observers.length;
+            }
+        }
+
+        // Create observable instance
+        const observable = new Observable();
+
+        // Event handlers
+        function handleClick() {
+            observable.notify("User clicked button!");
+        }
+
+        function handleToggle() {
+            observable.notify("User toggled switch!");
+        }
+
+        // Observers
+        function logger(data) {
+            console.log(`${Date.now()} ${data}`);
+        }
+
+        function toastify(data) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = data;
+            
+            toastContainer.appendChild(toast);
+            
+            // Remove toast after animation completes
+            setTimeout(() => {
+                toast.remove();
+            }, 2000);
+        }
+
+        // Subscribe observers
+        observable.subscribe(logger);
+        observable.subscribe(toastify);
+
+        // Set up event listeners
+        document.getElementById('clickButton').addEventListener('click', handleClick);
+        document.getElementById('toggleSwitch').addEventListener('change', handleToggle);
+    </script>
+</body>
+</html>
