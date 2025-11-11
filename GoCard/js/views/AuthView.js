@@ -15,11 +15,11 @@ function renderLoginView() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const user = authService.login(email, password);
-        if (user) {
+        if (user.error) {
+            alert(user.error);
+        } else {
             alert(`Welcome back, ${user.name}!`);
             renderUserView();
-        } else {
-            alert('Invalid email or password');
         }
     });
 

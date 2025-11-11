@@ -9,7 +9,7 @@ class AuthService {
     // For registering a new user 
     register(name, email, password) {
         if (this.users.find(u => u.email === email)) {
-            throw new Error('Email already in use');
+            return { error: 'Email already in use' };
         }
 
         const newUser = {
@@ -31,7 +31,7 @@ class AuthService {
             return user;
         }
         // Invalid credentials
-        throw new Error('Invalid email or password');
+        return { error: 'Invalid email or password' };
     }
 
     // For user logout
