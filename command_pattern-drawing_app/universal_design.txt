@@ -1,0 +1,29 @@
+- IDENTIFY BARRIERS
+    1. Visual impairments
+    Users with limited vision or color blindness may struggle to identify the selected shape or color. 
+    For example, the color picker only shows a visual color box, with no text label or alternative description.
+    2. Limited mobility
+    Currently, the app can only be used with a mouse. 
+    This makes it difficult or impossible for users who rely on the keyboard or assistive technologies to interact with it.
+
+- APPLY A STRATEGY
+    - Change the environment: make visual information (like the selected color and shape)
+    more perceptible through text and better contrast.
+    - Use a tool: add keyboard shortcuts so users can draw and control the app without using a mouse.
+
+- TARGET A UNIVERSAL DESIGN PRINCIPLE
+    1. Perceptible Information: The app now displays the current color and shape in text form,
+    making the interface understandable for users who cannot rely only on visual cues.
+    2. Low Physical Effort: Keyboard shortcuts allow users to perform the same actions (selecting shapes, undoing,clearing)
+    without needing precise mouse control.
+
+- REDESIGN AND DOCUMENT
+    1. Show current color as text
+    This helps users with vision impairments or color blindness identify the chosen color 
+    through readable text instead of relying on color perception.
+    2. Add keyboard shortcuts
+    Users who cannot use a mouse can still interact with the app using only the keyboard, 
+    reducing physical effort.
+    3. Improve button visibility
+    This ensures higher contrast for users with visual impairments
+    and a visible focus outline for keyboard navigation.
