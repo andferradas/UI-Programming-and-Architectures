@@ -79,29 +79,55 @@ document.getElementById('lineBtn').addEventListener('click', () => {
   text.textContent = 'Currently drawing: Line';
 });
 
+const toolButtons = document.querySelectorAll('[data-tool]');
+const actionButtons = document.querySelectorAll('[data-action]');
+
+function setActiveTool(toolName) {
+  toolButtons.forEach(btn => {
+    if (btn.dataset.tool === toolName) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  currentTool = toolName;
+}
+
+// Mouse click -> set tool
+toolButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    setActiveTool(button.dataset.tool);
+  });
+});
+
+// Action buttons (undo, redo, clear)
+actionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    button.focus();
+    setTimeout(() => button.blur(), 200);
+  });
+});
+
+// Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-  switch(e.key.toLowerCase()) {
-    case 'r':
-      currentShape = 'rectangle';
-      text.textContent = 'Currently drawing: Rectangle';
+  switch (e.key.toLowerCase()) {
+    case 'r': // rectangle
+      setActiveTool('rectangle');
       break;
-    case 'c':
-      currentShape = 'circle';
-      text.textContent = 'Currently drawing: Circle';
+    case 'c': // circle
+      setActiveTool('circle');
       break;
-    case 'l':
-      currentShape = 'line';
-      text.textContent = 'Currently drawing: Line';
+    case 'l': // line
+      setActiveTool('line');
       break;
-    case 'z':
-      history.undo();
+    case 'u': // undo
+      document.getElementById('undoBtn').click();
       break;
-    case 'y':
-      history.redo();
+    case 'y': // redo
+      document.getElementById('redoBtn').click();
       break;
-    case 'x':
-      history.execute(new Clear());
+    case 'x': // clear
+      document.getElementById('clearBtn').click();
       break;
   }
 });
-
