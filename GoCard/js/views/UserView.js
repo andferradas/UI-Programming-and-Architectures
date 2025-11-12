@@ -7,7 +7,6 @@ export function renderUserView() {
 
   app.innerHTML = `
     <h2>Welcome, ${user.name}!</h2>
-    <p>Email: ${user.email}</p>
     <button id="logoutBtn">Logout</button>
   `;
 

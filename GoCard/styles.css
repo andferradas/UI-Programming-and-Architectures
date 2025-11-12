@@ -1,0 +1,103 @@
+/*
+HEXADECIMAL LOGO COLOURS:
+Background Blue: #99DBF7
+Contouring-text: #522452
+Go-text: #E83F41
+Card-text: #FFC43B
+Card-face: #FCF5E0
+*/
+
+h1 {
+  color: #ffffffee;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #99DBF7;
+  /*background: linear-gradient(135deg, #88c0d0, #5e81ac);*/
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.auth-box {
+  background-color: #ffffffee;
+  padding: 60px 100px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 320px;
+  transition: all 0.3s ease;
+  align-items: center;
+}
+
+.auth-box:hover {
+  transform: translateY(-4px);
+}
+
+.auth-input,
+.auth-btn {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.auth-logo {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 20px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #E83F41;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-btn:hover {
+  background-color: #92aac2;
+}
+
+a {
+  color: #5e81ac;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

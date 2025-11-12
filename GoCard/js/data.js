@@ -1,4 +1,4 @@
-export const testUsers = [
-    {id: 1, name: "Alice", email: "alice@gmail.com", password: "password123"},
-    {id: 2, name: "Bob", email: "bob@gmail.com", password: "securepass"}
+export const dataUsers = [
+    {id: 1, name: "Andrea", email: "andrea@gmail.com", password: "1234"},
+    {id: 2, name: "Jorge", email: "jorge@gmail.com", password: "1234"}
 ];

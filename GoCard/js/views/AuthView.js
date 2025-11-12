@@ -4,11 +4,16 @@ import { renderUserView } from "./UserView.js";
 function renderLoginView() {
     const app = document.getElementById('app');
     app.innerHTML = `
-    <h2>Login</h2>
-    <input id="email" type="email" placeholder="Email"><br>
-    <input id="password" type="password" placeholder="Password"><br>
-    <button id="loginBtn">Login</button>
-    <p>No account? <a href="#" id="toRegister">Register here</a></p>
+    <div class="auth-container">
+        <div class="auth-box">
+            <img src="GoCard_logo.png" alt="GoCard Logo" class="auth-logo">
+            <h2>Login</h2>
+            <input id="email" type="email" placeholder="Email" class="auth-input"><br>
+            <input id="password" type="password" placeholder="Password" class="auth-input"><br>
+            <button id="loginBtn" class="auth-btn">Login</button>
+            <p>No account? <a href="#" id="toRegister">Register here</a></p>
+        </div>
+    </div>
     `;
 
     document.getElementById('loginBtn').addEventListener("click", () => {
@@ -29,12 +34,17 @@ function renderLoginView() {
 function renderRegisterView() {
     const app = document.getElementById('app');
     app.innerHTML = `
-    <h2>Register</h2>
-    <input id="name" type="text" placeholder="Name"><br>
-    <input id="email" type="email" placeholder="Email"><br>
-    <input id="password" type="password" placeholder="Password"><br>
-    <button id="registerBtn">Register</button>
-    <p>Already have an account? <a href="#" id="toLogin">Login here</a></p>
+    <div class="auth-container">
+        <div class="auth-box">
+            <img src="GoCard_logo.png" alt="GoCard Logo" class="auth-logo">
+            <h2>Register</h2>
+            <input id="name" type="text" placeholder="Name" class="auth-input"><br>
+            <input id="email" type="email" placeholder="Email" class="auth-input"><br>
+            <input id="password" type="password" placeholder="Password" class="auth-input"><br>
+            <button id="registerBtn" class="auth-btn">Register</button>
+            <p>Already have an account? <a href="#" id="toLogin">Login here</a></p>
+        </div>
+    </div>
     `;
 
     document.getElementById('registerBtn').addEventListener("click", () => {

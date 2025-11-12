@@ -1,9 +1,9 @@
-import { testUsers } from '../data.js';
+import { dataUsers } from '../data.js';
 
 class AuthService {
     constructor() {
         // Charging user data from data.js
-        this.users = [...testUsers];
+        this.users = [...dataUsers];
     }
 
     // For registering a new user 
