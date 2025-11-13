@@ -90,7 +90,7 @@ body {
 }
 
 .auth-btn:hover {
-  background-color: #92aac2;
+  background-color: #ea6769;
 }
 
 a {
@@ -100,4 +100,70 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* HEADER */
+.user-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f172a;
+  padding: 10px 0;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+}
+
+/* MAIN CONTENT */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.home-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.packs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.pack-card {
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.pack-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.pack-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
