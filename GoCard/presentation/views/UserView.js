@@ -1,14 +1,13 @@
-import { authService } from "../services/AuthService.js";
+import { authService } from "../../services/AuthService.js";
 import { renderLoginView } from "./AuthView.js";
 
-export function renderUserView() {
+export async function renderUserView() {
   const app = document.getElementById('app');
   const user = authService.getCurrentUser();
 
-  app.innerHTML = `
-    <h2>Welcome, ${user.name}!</h2>
-    <button id="logoutBtn">Logout</button>
-  `;
+  const response = await fetch("./presentation/html/user_home.html");
+  const html = await response.text();
+  app.innerHTML = html;
 
   document.getElementById("logoutBtn").addEventListener("click", () => {
     authService.logout();

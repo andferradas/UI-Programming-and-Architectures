@@ -1,4 +1,4 @@
-import { dataUsers } from '../data.js';
+import { dataUsers } from '../data/data.js';
 
 class AuthService {
     constructor() {

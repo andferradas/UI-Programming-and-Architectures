@@ -1,20 +1,12 @@
-import { authService } from "../services/AuthService.js";
+import { authService } from "../../services/AuthService.js";
 import { renderUserView } from "./UserView.js";
 
-function renderLoginView() {
+export async function renderLoginView() {
     const app = document.getElementById('app');
-    app.innerHTML = `
-    <div class="auth-container">
-        <div class="auth-box">
-            <img src="GoCard_logo.png" alt="GoCard Logo" class="auth-logo">
-            <h2>Login</h2>
-            <input id="email" type="email" placeholder="Email" class="auth-input"><br>
-            <input id="password" type="password" placeholder="Password" class="auth-input"><br>
-            <button id="loginBtn" class="auth-btn">Login</button>
-            <p>No account? <a href="#" id="toRegister">Register here</a></p>
-        </div>
-    </div>
-    `;
+    // Load login HTML -> in fetch is loading from the main html (childrens_social.html)
+    const response = await fetch("./presentation/html/login.html");
+    const html = await response.text();
+    app.innerHTML = html;
 
     document.getElementById('loginBtn').addEventListener("click", () => {
         const email = document.getElementById('email').value;
@@ -31,21 +23,11 @@ function renderLoginView() {
     document.getElementById('toRegister').addEventListener("click", (renderRegisterView));
 }
 
-function renderRegisterView() {
+export async function renderRegisterView() {
     const app = document.getElementById('app');
-    app.innerHTML = `
-    <div class="auth-container">
-        <div class="auth-box">
-            <img src="GoCard_logo.png" alt="GoCard Logo" class="auth-logo">
-            <h2>Register</h2>
-            <input id="name" type="text" placeholder="Name" class="auth-input"><br>
-            <input id="email" type="email" placeholder="Email" class="auth-input"><br>
-            <input id="password" type="password" placeholder="Password" class="auth-input"><br>
-            <button id="registerBtn" class="auth-btn">Register</button>
-            <p>Already have an account? <a href="#" id="toLogin">Login here</a></p>
-        </div>
-    </div>
-    `;
+    const response = await fetch("./presentation/html/register.html");
+    const html = await response.text();
+    app.innerHTML = html;
 
     document.getElementById('registerBtn').addEventListener("click", () => {
         const name = document.getElementById('name').value;
@@ -62,5 +44,3 @@ function renderRegisterView() {
 
     document.getElementById('toLogin').addEventListener("click", (renderLoginView));
 }
-
-export { renderLoginView, renderRegisterView };

@@ -1,4 +1,4 @@
-import { Command } from "./classCommand.js";
+import { Command } from "./Command.js";
 
 export class Clear extends Command {
     execute(ctx) {

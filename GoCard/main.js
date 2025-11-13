@@ -1,16 +1,29 @@
 // A file with only import statements
 
-import "./data.js";
-import {startApp} from "./app.js";
-import "./models/Card.js";
-import "./models/Observer.js";
-import "./models/User.js";
+// Data layer
+import "./data/data.js";
+import "./data/models/Card.js";
+import "./data/models/Observer.js";
+import "./data/models/User.js";
+import "./data/models/Command/ClearCommand.js";
+import "./data/models/Command/Command.js";
+import "./data/models/Command/DrawCommand.js";
+
+// Presentation layer
+import "./presentation/views/AuthView.js";
+import "./presentation/views/CardView.js";
+import "./presentation/views/CreateCardView.js";
+import "./presentation/views/TransactionView.js";
+import "./presentation/views/UserView.js";
+
+// Service logic layer
 import "./services/AuthService.js";
 import "./services/CardFactory.js";
+import "./services/CommandService.js";
+import "./services/HistoryService.js";
 import "./services/NotifyService.js";
-import "./views/AuthView.js";
-import "./views/CardView.js";
-import "./views/TransactionView.js";
-import "./views/UserView.js";
+
+// App entry point
+import { startApp } from "./app.js";
 
 startApp();

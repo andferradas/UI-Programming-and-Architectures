@@ -1,4 +1,4 @@
-import { Command } from "./classCommand.js";
+import { Command } from "./Command.js";
 
 export class Draw extends Command {
     constructor(shape, color, start, end) {
@@ -32,7 +32,6 @@ export class Draw extends Command {
         ctx.lineTo(x2, y2);
         ctx.stroke();
         }
-
 
         ctx.restore();
     }

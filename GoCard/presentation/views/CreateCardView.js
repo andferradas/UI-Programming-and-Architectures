@@ -1,7 +1,7 @@
-import { Draw } from "./../models/Command/DrawCommand.js";
-import { Clear } from "./../models/Command/ClearCommand.js";
-import { History } from "./../services/HistoryService.js";
-import { CardFactory } from "../services/CardFactory.js";
+/*
+import { Draw} from "./../../data/models/Command/DrawCommand.js";
+import { Clear } from "./../../data/models/Command/ClearCommand.js";
+import { History } from "./../../services/HistoryService.js";
 
 const canvas = document.getElementById('drawCanvas');
 const ctx = canvas.getContext('2d');
@@ -132,3 +132,4 @@ document.addEventListener('keydown', (e) => {
       break;
   }
 });
+*/
