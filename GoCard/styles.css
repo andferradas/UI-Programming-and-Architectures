@@ -189,10 +189,10 @@ a:hover {
 }
 
 .header-logo {
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: white;
+  background: none;
   padding: 4px;
 }
 
@@ -209,10 +209,10 @@ a:hover {
 }
 
 .user-avatar {
-  width: 38px;
-  height: 38px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: white;
+  background: none;
   object-fit: cover;
 }
 

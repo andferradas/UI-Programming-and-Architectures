@@ -14,6 +14,7 @@ export async function renderUserView() {
 
   const user = authService.getCurrentUser();
   document.getElementById("userName").textContent = user.name;
+  document.getElementById("user-avatar").src = user.avatar;
 
   const packs = packService.getAllPackages();
   const container = document.getElementById("packsContainer");
