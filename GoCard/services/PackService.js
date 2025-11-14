@@ -1,6 +1,6 @@
 import { dataPackages } from "../data/data.js";
 
-export class PackService {
+class PackService {
     getAllPackages() {
         return dataPackages;
     }
@@ -9,3 +9,5 @@ export class PackService {
         return dataPackages.find(pack => pack.id === id);
     }
 }
+
+export const packService = new PackService();

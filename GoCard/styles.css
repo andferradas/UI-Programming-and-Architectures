@@ -7,127 +7,233 @@ Card-text: #FFC43B
 Card-face: #FCF5E0
 */
 
-h1 {
-  color: #ffffffee;
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 50px;
-  font-weight: bold;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body, html {
+  overflow-x: hidden;   /* evita scroll horizontal */
+}
+
+:root {
+  --blue-bg: #99DBF7;
+  --purple-text: #522452;
+  --red-main: #E83F41;
+  --red-main-hover: #ea6769;
+  --yellow-card: #FFC43B;
+  --cream-card: #FCF5E0;
+  --dark-header: #0f172a;
+
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.15);
+  --shadow-hover: 0 10px 25px rgba(0,0,0,0.22);
+  --transition: 0.25s ease;
+}
+
+/* GENERAL ---------------------------------------- */
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #99DBF7;
-  /*background: linear-gradient(135deg, #88c0d0, #5e81ac);*/
+  background-color: var(--blue-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  color: var(--purple-text);
 }
 
-#app {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+h1 {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 48px;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
+
+/* SPLASH SCREEN */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--blue-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 0.7s ease forwards;
+  animation-delay: 3s; /* Tiempo total antes de desaparecer */
+}
+
+.splash-logo {
+  width: 260px;
+  margin-bottom: 20px;
+}
+
+.splash-title {
+  font-size: 42px;
+  color: var(--purple-text);
+  font-weight: 700;
+}
+
+.splash-title span {
+  color: var(--red-main);
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* APP WRAPPER ------------------------------------ */
+
+#app {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* AUTH -------------------------------------------- */
 
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 100%;
 }
 
 .auth-box {
+  width: 360px;
   background-color: #ffffffee;
-  padding: 60px 100px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 50px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   text-align: center;
-  width: 320px;
-  transition: all 0.3s ease;
-  align-items: center;
+  transition: var(--transition);
 }
 
 .auth-box:hover {
   transform: translateY(-4px);
-}
-
-.auth-input,
-.auth-btn {
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
+  box-shadow: var(--shadow-hover);
 }
 
 .auth-logo {
-  width: 200px;
-  margin-bottom: 10px;
+  width: 180px;
+  margin-bottom: 20px;
 }
 
 .auth-input {
   width: 100%;
-  padding: 20px;
-  margin: 5px 0;
-  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 8px 0;
+  border-radius: var(--radius);
   border: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+
+.auth-input:focus {
+  border: 1px solid var(--purple-text);
+  outline: none;
 }
 
 .auth-btn {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
+  margin-bottom: 5px;
   border: none;
-  border-radius: 8px;
-  background-color: #E83F41;
+  border-radius: var(--radius);
+  background-color: var(--red-main);
   color: white;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: var(--transition);
 }
 
 .auth-btn:hover {
-  background-color: #ea6769;
+  background-color: var(--red-main-hover);
 }
 
 a {
-  color: #5e81ac;
+  color: var(--purple-text);
   text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-/* HEADER */
+/* HEADER ------------------------------------------ */
+
 .user-header {
+  width: 100%;
+  background-color: #522452;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #0f172a;
-  padding: 10px 0;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.header-logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .user-info {
   display: flex;
+  gap: 14px;
   align-items: center;
-  gap: 15px;
 }
 
-.user-logo {
-  width: 50px;
-  height: 50px;
+.user-avatar {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: white;
   object-fit: cover;
 }
 
-/* MAIN CONTENT */
+.logout-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--red-main);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.logout-btn:hover {
+  background-color: var(--red-main-hover);
+}
+
+/* HOME -------------------------------------------- */
+
 .home-container {
   display: flex;
   flex-direction: column;
@@ -136,34 +242,46 @@ a:hover {
 }
 
 .home-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
+
+/* PACKS GRID -------------------------------------- */
 
 .packs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  width: 80%;
-  max-width: 1000px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 25px;
+  width: 90%;
+  max-width: 1100px;
 }
 
 .pack-card {
-  background-color: #f1f5f9;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-}
-
-.pack-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: var(--transition);
 }
 
 .pack-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+  width: 160px;
+  height: auto;
+  transition: var(--transition);
 }
+
+.pack-card img:hover {
+  transform: scale(1.07);
+}
+
+.pack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--yellow-card);
+}
+
+.pack-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--purple-text);
+}
+

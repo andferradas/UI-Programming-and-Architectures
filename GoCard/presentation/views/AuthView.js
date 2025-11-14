@@ -1,10 +1,10 @@
-import { authService } from "../../services/AuthService.js";
+import { authService } from "/services/AuthService.js";
 import { renderUserView } from "./UserView.js";
 
 export async function renderLoginView() {
     const app = document.getElementById('app');
     // Load login HTML -> in fetch is loading from the main html (childrens_social.html)
-    const response = await fetch("./presentation/html/login.html");
+    const response = await fetch("/presentation/html/login.html");
     const html = await response.text();
     app.innerHTML = html;
 
@@ -25,7 +25,7 @@ export async function renderLoginView() {
 
 export async function renderRegisterView() {
     const app = document.getElementById('app');
-    const response = await fetch("./presentation/html/register.html");
+    const response = await fetch("/presentation/html/register.html");
     const html = await response.text();
     app.innerHTML = html;
 
