@@ -15,6 +15,7 @@ Card-face: #FCF5E0
 
 body, html {
   overflow-x: hidden;   /* evita scroll horizontal */
+  position: relative; 
 }
 
 :root {
@@ -181,7 +182,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 10px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -238,23 +239,23 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 .home-title {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  font-weight: bold;
+  font-size: 48px;
+  margin-bottom: 20px;
+  margin-top: 20px !important;
 }
 
 /* PACKS GRID -------------------------------------- */
 
 .packs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 25px;
-  width: 90%;
-  max-width: 1100px;
+  display: flex;
+  gap: 40px;
+  padding-bottom: 20px;
+  width: 100%;
+  justify-content: center;
 }
 
 .pack-card {
@@ -264,7 +265,7 @@ a:hover {
 }
 
 .pack-card img {
-  width: 160px;
+  width: 400px;
   height: auto;
   transition: var(--transition);
 }
@@ -285,3 +286,178 @@ a:hover {
   color: var(--purple-text);
 }
 
+/* PACKAGE VIEW ----------------------------------- */
+/* Main container */
+.package-view {
+    max-width: 1200px;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.package-view h1 {
+    margin-top: 5px !important;
+}
+
+/* Package/collection title */
+#packTitle {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    color: var(--purple-text);
+}
+
+/* Large package image */
+.pack-big-image {
+    display: block;
+    max-width: 400px;
+    margin: 0 auto 15px auto;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Package description */
+#packtext {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: var(--purple-text);
+}
+
+/* Container for the cards */
+.cards-grid {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 10px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #888 transparent;
+}
+
+/* Scrollbar style (Webkit) */
+.cards-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards-grid::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.cards-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Each card */
+.card-item {
+    min-width: 120px;
+    flex: 0 0 auto;
+    cursor: pointer;
+}
+
+.card-item img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* ============================================================
+   OPENED CARD VIEW
+   Styles for the screen shown after opening a package
+   ============================================================ */
+
+/* Main container */
+.opened-card-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    animation: fadeIn 0.6s ease forwards; /* soft fade-in */
+}
+
+/* Title */
+.opened-card-view h1 {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Card image displayed after opening */
+.opened-card-img {
+    width: 350px;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+    animation: cardPop 0.7s ease forwards;
+}
+
+/* ============================================================
+   GLOBAL BACK BUTTON
+   Same style for all screens
+   ============================================================ */
+
+.back-btn-common {
+    position: absolute;
+    background-color: var(--purple-text);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    top: 20px;
+    left: 20px;
+}
+
+/* Hover */
+.back-btn-common:hover {
+    background-color: #6a2c6a;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   ANIMATION: Envelope opening effect
+   This makes the card look like it jumps out with a flip effect
+   ============================================================ */
+
+/* Card pops out with scale + gentle rotation */
+@keyframes cardPop {
+    0% {
+        transform: scale(0.3) rotateX(90deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05) rotateX(15deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotateX(0deg);
+    }
+}
+
+/* Soft fade for the whole screen */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation for slower opening before showing card screen */
+@keyframes slowOpen {
+    0% { transform: scale(1); }
+    30% { transform: scale(0.95); }
+    60% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* Apply to pack image when clicked */
+.pack-opening {
+    animation: slowOpen 2s ease forwards;
+}

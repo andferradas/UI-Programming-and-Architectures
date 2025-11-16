@@ -1,6 +1,7 @@
 import { authService } from "/services/AuthService.js";
 import { renderLoginView } from "./AuthView.js";
 import { packService } from "/services/PackService.js";
+import { renderPackageView } from "./PackageView.js";
 
 export async function renderUserView() {
   const app = document.getElementById('app');
@@ -23,11 +24,11 @@ export async function renderUserView() {
     const card = document.createElement("div");
     card.classList.add("pack-card");
     card.innerHTML = `
-      <img src="${pack.image}" alt="${pack.name}">
-      <h3>${pack.name}</h3>
+      <img src="${pack.image}" alt="${pack.nameCollection}">
+      <h3>${pack.nameCollection}</h3>
     `;
     card.addEventListener("click", () => {
-      alert(`Opening ${pack.name}...`);
+      renderPackageView(pack.id);
     });
     container.appendChild(card);
   });

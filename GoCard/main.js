@@ -4,8 +4,8 @@
 import "/data/data.js";
 import "/data/models/Card.js";
 import "/data/models/Observer.js";
-import "/data/models/User.js";
 import "/data/models/Package.js";
+import "/data/models/User.js";
 import "/data/models/Command/ClearCommand.js";
 import "/data/models/Command/Command.js";
 import "/data/models/Command/DrawCommand.js";
@@ -14,6 +14,7 @@ import "/data/models/Command/DrawCommand.js";
 import "/presentation/views/AuthView.js";
 import "/presentation/views/CardView.js";
 import "/presentation/views/CreateCardView.js";
+import "/presentation/views/PackageView.js";
 import "/presentation/views/TransactionView.js";
 import "/presentation/views/UserView.js";
 
@@ -23,6 +24,7 @@ import "/services/CardFactory.js";
 import "/services/CommandService.js";
 import "/services/HistoryService.js";
 import "/services/NotifyService.js";
+import "/services/PackService.js";
 
 // App entry point
 import { startApp } from "/app.js";
