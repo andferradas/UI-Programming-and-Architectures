@@ -21,7 +21,6 @@ import "/presentation/views/UserView.js";
 // Service logic layer
 import "/services/AuthService.js";
 import "/services/CardFactory.js";
-import "/services/CommandService.js";
 import "/services/HistoryService.js";
 import "/services/NotifyService.js";
 import "/services/PackService.js";

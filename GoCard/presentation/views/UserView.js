@@ -2,6 +2,7 @@ import { authService } from "/services/AuthService.js";
 import { renderLoginView } from "./AuthView.js";
 import { packService } from "/services/PackService.js";
 import { renderPackageView } from "./PackageView.js";
+import { renderCreateCardView } from "./CreateCardView.js";
 
 export async function renderUserView() {
   const app = document.getElementById('app');
@@ -37,4 +38,21 @@ export async function renderUserView() {
     authService.logout();
     renderLoginView();
   });
+
+  document.getElementById("menu-collections").addEventListener("click", () => {
+    console.log("Show collections clicked");
+  });
+
+  document.getElementById("menu-create-card").addEventListener("click", async () => {
+    renderCreateCardView();
+  });
+
+  document.getElementById("menu-users").addEventListener("click", () => {
+    console.log("Users clicked");
+  });
+
+  document.getElementById("menu-posts").addEventListener("click", () => {
+    console.log("Posts clicked");
+  });
+
 }

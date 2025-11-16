@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Simple Drawing App</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <h1>DRAWING</h1>
+<main class="create-card-container">
+  <h1 class="home-title">Create Your Card</h1>
   <p id="currentDraw">Currently drawing: Rectangle</p>
+
+  <!-- Toolbar -->
   <div class="toolbar">
     <div class="tool">
       <button id="rectBtn" data-tool="rectangle">Rectangle</button>
@@ -45,10 +40,13 @@
     </div>
   </div>
 
+  <!-- Canvas -->
   <div id="canvasWrap">
-    <canvas id="drawCanvas" width="900" height="470"></canvas>
+    <canvas id="drawCanvas" width="500" height="650"></canvas>
   </div>
 
-  <script type="module" src="../js/views/CreateCardView.js"></script>
-</body>
-</html>
+  <!-- Save button -->
+  <div class="save-card">
+    <button id="saveCardBtn">Save Card</button>
+  </div>
+</main>
