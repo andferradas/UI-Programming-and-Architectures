@@ -3,6 +3,8 @@ import { renderLoginView } from "./AuthView.js";
 import { packService } from "/services/PackService.js";
 import { renderPackageView } from "./PackageView.js";
 import { renderCreateCardView } from "./CreateCardView.js";
+import { renderCollectionView } from "./CollectionView.js";
+import { renderPageUsersView } from "./PageUsersView.js";
 
 export async function renderUserView() {
   const app = document.getElementById('app');
@@ -34,13 +36,17 @@ export async function renderUserView() {
     container.appendChild(card);
   });
 
+  document.getElementById("homeBtn").addEventListener("click", () => {
+    renderUserView();
+  });
+
   document.getElementById("logoutBtn").addEventListener("click", () => {
     authService.logout();
     renderLoginView();
   });
 
   document.getElementById("menu-collections").addEventListener("click", () => {
-    console.log("Show collections clicked");
+    renderCollectionView();
   });
 
   document.getElementById("menu-create-card").addEventListener("click", async () => {
@@ -48,7 +54,7 @@ export async function renderUserView() {
   });
 
   document.getElementById("menu-users").addEventListener("click", () => {
-    console.log("Users clicked");
+    renderPageUsersView();
   });
 
   document.getElementById("menu-posts").addEventListener("click", () => {

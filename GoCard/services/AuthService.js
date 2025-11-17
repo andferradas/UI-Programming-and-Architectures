@@ -16,7 +16,8 @@ class AuthService {
             id: this.users.length + 1,
             name,
             email,
-            password
+            password,
+            cardsOwned: []
         };
         this.users.push(newUser);
         return newUser;
@@ -42,7 +43,9 @@ class AuthService {
 
     // Get current logged-in user
     getCurrentUser() {
-        return JSON.parse(localStorage.getItem('currentUser'));
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        if (!user) return null;
+        return { ...user, cardsOwned: user.cardsOwned || [] };
     }
 }
 
