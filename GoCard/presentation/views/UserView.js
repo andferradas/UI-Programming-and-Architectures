@@ -5,6 +5,7 @@ import { renderPackageView } from "./PackageView.js";
 import { renderCreateCardView } from "./CreateCardView.js";
 import { renderCollectionView } from "./CollectionView.js";
 import { renderPageUsersView } from "./PageUsersView.js";
+import { renderPostsView } from "./PostsView.js";
 
 export async function renderUserView() {
   const app = document.getElementById('app');
@@ -58,7 +59,7 @@ export async function renderUserView() {
   });
 
   document.getElementById("menu-posts").addEventListener("click", () => {
-    console.log("Posts clicked");
+    renderPostsView();
   });
 
 }

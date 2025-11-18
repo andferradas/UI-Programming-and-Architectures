@@ -1027,3 +1027,176 @@ a:hover {
   object-fit: cover;
   border: 2px solid var(--purple-text);
 }
+
+/* ==================== POSTS VIEW ==================== */
+
+.posts-view {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Page title */
+.posts-view h1 {
+  font-size: 42px;
+  color: var(--purple-text);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Tabs buttons */
+.posts-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: #ffffffcc;
+  color: var(--purple-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 16px;
+  box-shadow: var(--shadow);
+}
+
+.tab-btn:hover {
+  background-color: var(--yellow-card);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background-color: var(--red-main);
+  color: white;
+  box-shadow: var(--shadow-hover);
+}
+
+/* Create Post button */
+.create-post-btn {
+  align-self: center;
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--purple-text);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.create-post-btn:hover {
+  background-color: #6a2c6a;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Container for all posts */
+#postsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Individual post */
+.post-item {
+  background-color: #ffffffcc;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Post header */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  background-color: var(--blue-bg);
+  color: var(--purple-text);
+  font-weight: 600;
+}
+
+/* Avatar inside post */
+.post-header .small-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--purple-text);
+}
+
+/* Card image */
+.post-card-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* Reactions container */
+.post-reactions {
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+/* Reaction buttons */
+.reaction-buttons {
+  display: flex;
+  gap: 10px;
+  padding: 10px 15px 15px 15px;
+}
+
+.reaction-buttons .reactBtn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--yellow-card);
+  cursor: pointer;
+  font-size: 18px;
+  transition: var(--transition);
+}
+
+.reaction-buttons .reactBtn:hover {
+  background-color: #ffd566;
+  transform: translateY(-2px);
+}
+
+/* Highlight reactions of the current user */
+.reaction-item.own-reaction {
+    background-color: #ffcccc; /* slightly reddish background to highlight */
+    font-weight: 600;
+    border: 1px solid var(--red-main);
+}
+
+.reaction-buttons .reactBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    color: #666;
+}
+
+/* Reactions in posts with user names */
+.post-reactions .reaction-item {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+    background-color: #ffeeba;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    color: var(--purple-text);
+    font-size: 14px;
+}
