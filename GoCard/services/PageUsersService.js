@@ -25,14 +25,31 @@ class PageUsersService {
     if (!user.friends.includes(friendId)) user.friends.push(friendId);
   }
 
-  sendFriendRequest(fromId, toId) {
-    if (!this.friendRequests.some(r => r.from === fromId && r.to === toId)) {
-      this.friendRequests.push({ from: fromId, to: toId });
+  sendFriendRequest(senderId, receiverId) {
+    const receiver = this.getUserById(receiverId);
+    if (!receiver.friendRequests.includes(senderId)) {
+      receiver.friendRequests.push(senderId);
     }
   }
 
-  getFriendRequestsForUser(userId) {
-    return this.friendRequests.filter(r => r.to === userId);
+  getReceivedFriendRequests(userId) {
+    const user = this.getUserById(userId);
+    return user.friendRequests.map(id => this.getUserById(id));
+  }
+
+  acceptFriendRequest(userId, senderId) {
+    const user = this.getUserById(userId);
+    const sender = this.getUserById(senderId);
+
+    if (!user.friends.includes(senderId)) user.friends.push(senderId);
+    if (!sender.friends.includes(userId)) sender.friends.push(userId);
+
+    user.friendRequests = user.friendRequests.filter(id => id !== senderId);
+  }
+
+  rejectFriendRequest(userId, senderId) {
+    const user = this.getUserById(userId);
+    user.friendRequests = user.friendRequests.filter(id => id !== senderId);
   }
 
   updateAvatar(user, newAvatarUrl) {

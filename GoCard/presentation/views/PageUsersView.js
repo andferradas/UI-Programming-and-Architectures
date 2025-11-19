@@ -7,7 +7,7 @@ export async function renderPageUsersView() {
   const page = await fetch("/presentation/html/page_users.html").then(r => r.text());
   app.innerHTML = page;
 
-  const user = authService.getCurrentUser();
+  let user = pageUsersService.getUserById(authService.getCurrentUser().id);
 
   // Current avatar
   const avatarImg = document.getElementById("currentAvatar");
@@ -34,8 +34,15 @@ export async function renderPageUsersView() {
   document.getElementById("saveAvatarBtn").addEventListener("click", () => {
     pageUsersService.updateAvatar(user, selectedAvatarUrl);
     localStorage.setItem('currentUser', JSON.stringify(user));
+
+    const headerAvatar = document.getElementById("user-avatar");
+    if (headerAvatar) {
+      headerAvatar.src = selectedAvatarUrl;
+    }
+
     alert("Avatar saved!");
   });
+
 
   // Search users
   const searchInput = document.getElementById("searchUserInput");
@@ -81,4 +88,48 @@ export async function renderPageUsersView() {
     `).join("");
   }
   renderFriends();
+
+  // Friend Requests Received
+  const friendRequestsDiv = document.getElementById("friendRequestsList");
+
+  function renderFriendRequests() {
+    const requests = pageUsersService.getReceivedFriendRequests(user.id);
+
+    friendRequestsDiv.innerHTML = requests.length === 0
+      ? "<p>No friend requests received</p>"
+      : requests.map(r => `
+          <div class="request-item">
+            <img src="${r.avatar}" class="small-avatar">
+            <span>${r.name}</span>
+
+            <button class="acceptRequestBtn" data-id="${r.id}">Accept</button>
+            <button class="rejectRequestBtn" data-id="${r.id}">Reject</button>
+          </div>
+        `).join("");
+
+    // Event listeners
+    friendRequestsDiv.querySelectorAll(".acceptRequestBtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const senderId = Number(btn.dataset.id);
+        pageUsersService.acceptFriendRequest(user.id, senderId);
+
+        user = pageUsersService.getUserById(user.id);
+
+        renderFriends();
+        renderFriendRequests();
+      });
+    });
+
+
+    friendRequestsDiv.querySelectorAll(".rejectRequestBtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const senderId = Number(btn.dataset.id);
+        pageUsersService.rejectFriendRequest(user.id, senderId);
+        renderFriendRequests();
+      });
+    });
+  }
+
+  renderFriendRequests();
+
 }

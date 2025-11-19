@@ -1028,6 +1028,104 @@ a:hover {
   border: 2px solid var(--purple-text);
 }
 
+.requests-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #ffffffcc;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.requests-section h2 {
+  text-align: center;
+  color: var(--purple-text);
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Container for each request */
+.request-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  transition: var(--transition);
+}
+
+.request-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Avatar */
+.request-item .small-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 14px;
+}
+
+/* Name text */
+.request-item span {
+  flex-grow: 1;
+  color: var(--purple-text);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Buttons */
+.acceptRequestBtn,
+.rejectRequestBtn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+/* Accept button */
+.acceptRequestBtn {
+  background-color: var(--yellow-card);
+  color: var(--purple-text);
+  margin-right: 8px;
+}
+
+.acceptRequestBtn:hover {
+  background-color: #ffd568;
+  transform: translateY(-2px);
+}
+
+/* Reject button */
+.rejectRequestBtn {
+  background-color: var(--red-main);
+  color: white;
+}
+
+.rejectRequestBtn:hover {
+  background-color: var(--red-main-hover);
+  transform: translateY(-2px);
+}
+
+/* When no requests */
+.requests-section p {
+  text-align: center;
+  color: var(--purple-text);
+  font-size: 16px;
+  opacity: 0.8;
+}
+
 /* ==================== POSTS VIEW ==================== */
 
 .posts-view {
