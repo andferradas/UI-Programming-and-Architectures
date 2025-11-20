@@ -1,6 +1,4 @@
-import { Command } from "./Command.js";
-
-export class Draw extends Command {
+class Draw extends Command {
     constructor(shape, color, start, end) {
         super();
         this.shape = shape;
@@ -36,3 +34,5 @@ export class Draw extends Command {
         ctx.restore();
     }
 }
+
+window.Draw = Draw;

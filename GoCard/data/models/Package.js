@@ -1,4 +1,4 @@
-export class Package {
+class Package {
     constructor(id, nameCollection, image, cards = []) {
         this.id = id;
         this.nameCollection = nameCollection;

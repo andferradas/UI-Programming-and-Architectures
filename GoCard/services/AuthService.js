@@ -1,6 +1,3 @@
-import { dataUsers, dataAvatars } from "/data/data.js";
-import { pageUsersService } from "/services/PageUsersService.js";
-
 const colors = ["Red", "Blue", "Green", "Yellow", "Purple", "Pink", "Orange", "Silver", "Golden", "White", "Black"];
 const animals = ["Tiger", "Fox", "Penguin", "Lion", "Dolphin", "Eagle", "Panda", "Bear", "Wolf", "Turtle", "Shark", "Frog", "Monkey"];
 
@@ -13,7 +10,6 @@ function generateUniqueName() {
     } while (dataUsers.some(u => u.name === name));
     return name;
 }
-
 
 class AuthService {
     constructor() {
@@ -80,4 +76,4 @@ class AuthService {
     }
 }
 
-export const authService = new AuthService();
+window.authService = new AuthService();

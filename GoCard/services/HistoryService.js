@@ -1,4 +1,4 @@
-export class History {
+class History {
     constructor(ctx) {
         this.ctx = ctx;
         this.history = [];

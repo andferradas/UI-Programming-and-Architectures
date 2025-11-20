@@ -1,4 +1,4 @@
-export class Post {
+class Post {
     constructor(id, userIdOwnerPost, cardId, reactions = []) {
         this.id = id;
         this.userIdOwnerPost = userIdOwnerPost;

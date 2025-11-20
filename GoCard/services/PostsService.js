@@ -1,7 +1,3 @@
-import { dataPosts } from "/data/data.js";
-import { Post } from "/data/models/Post.js";
-import { dataCards } from "/data/data.js";
-
 class PostsService {
     constructor() {
         this.posts = [...dataPosts];
@@ -47,4 +43,4 @@ class PostsService {
     }
 }
 
-export const postsService = new PostsService();
+window.postsService = new PostsService();

@@ -1,5 +1,3 @@
-import { dataCards } from "/data/data.js";
-
 class CardService {
     getCardById(id) {
         return dataCards.find(c => c.id === Number(id));
@@ -15,4 +13,4 @@ class CardService {
     }
 }
 
-export const cardService = new CardService();
+window.cardService = new CardService();

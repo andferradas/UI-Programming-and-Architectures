@@ -1,4 +1,4 @@
-export class Card {
+class Card {
     constructor(id, nameCard, image, collectionId) {
         this.id = id;
         this.nameCard = nameCard;
@@ -7,14 +7,14 @@ export class Card {
     }
 }
 
-export class DinosaurCard extends Card {
+class DinosaurCard extends Card {
     constructor(id, nameCard, image, rarity, collectionId) {
         super(id, nameCard, image, collectionId);
         this.rarity = rarity;
     }
 }
 
-export class SpaceCard extends Card {
+class SpaceCard extends Card {
     constructor(id, nameCard, image, collectionId) {
         super(id, nameCard, image, collectionId);
     }

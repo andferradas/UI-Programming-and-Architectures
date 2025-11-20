@@ -1,14 +1,21 @@
-import { authService } from "/services/AuthService.js";
-import { renderUserView } from "./UserView.js";
-
 let globalKeyListener = null;
 
-export async function renderLoginView() {
+async function renderLoginView() {
     const app = document.getElementById('app');
-    // Load login HTML -> in fetch is loading from the main html (childrens_social.html)
-    const response = await fetch("/presentation/html/login.html");
+    /* For doing with Live Server extension:
+    const response = await fetch("presentation/html/login.html");
     const html = await response.text();
-    app.innerHTML = html;
+    */
+    app.innerHTML = `<div class="auth-container">
+        <div class="auth-box">
+            <img src="assets/GoCard_logo.png" alt="GoCard Logo" class="auth-logo">
+            <h2>Login</h2>
+            <input id="email" type="email" placeholder="Email" class="auth-input"><br>
+            <input id="password" type="password" placeholder="Password" class="auth-input"><br>
+            <button id="loginBtn" class="auth-btn">Login</button>
+            <p>No account? <a href="#" id="toRegister">Register here</a></p>
+        </div>
+    </div> `;
 
     document.getElementById('loginBtn').addEventListener("click", () => {
         const email = document.getElementById('email').value;
@@ -37,11 +44,23 @@ export async function renderLoginView() {
     document.getElementById('toRegister').addEventListener("click", (renderRegisterView));
 }
 
-export async function renderRegisterView() {
+async function renderRegisterView() {
     const app = document.getElementById('app');
-    const response = await fetch("/presentation/html/register.html");
+
+    /* For doing with Live Server extension:
+    const response = await fetch("presentation/html/register.html");
     const html = await response.text();
-    app.innerHTML = html;
+    */
+    app.innerHTML = `<div class="auth-container">
+        <div class="auth-box">
+            <img src="assets/GoCard_logo.png" alt="GoCard Logo" class="auth-logo">
+            <h2>Register</h2>
+            <input id="email" type="email" placeholder="Email" class="auth-input"><br>
+            <input id="password" type="password" placeholder="Password" class="auth-input"><br>
+            <button id="registerBtn" class="auth-btn">Register</button>
+            <p>Already have an account? <a href="#" id="toLogin">Login here</a></p>
+        </div>
+    </div>`;
 
     document.getElementById('registerBtn').addEventListener("click", () => {
         const email = document.getElementById('email').value;

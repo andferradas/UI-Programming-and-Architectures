@@ -1,19 +1,16 @@
-import { renderPackageView } from "./PackageView.js";
-
-export function renderOpenedCardView(card, packId) {
+function renderOpenedCardView(card, packId) {
     const app = document.getElementById("app");
 
-    fetch("/presentation/html/opened_card.html")
-        .then(r => r.text())
-        .then(page => {
-            app.innerHTML = page;
+    app.innerHTML = `<div class="opened-card-view">
+        <button id="backToPackagesBtn" class="back-btn-common back-btn-fixed">⬅ Back</button>
+        <h1>You got this card!</h1>
+        <img id="openedCardImage" class="opened-card-img" />
+    </div>
+    `;
 
-            // Show the image of the obtained card
-            document.getElementById("openedCardImage").src = card.image;
+    document.getElementById("openedCardImage").src = card.image;
 
-            // Back button to return to the package
-            document.getElementById("backToPackagesBtn").addEventListener("click", () => {
-                renderPackageView(packId);
-            });
-        });
+    document.getElementById("backToPackagesBtn").addEventListener("click", () => {
+        renderPackageView(packId);
+    });
 }

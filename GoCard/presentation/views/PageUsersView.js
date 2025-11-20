@@ -1,11 +1,38 @@
-import { authService } from "/services/AuthService.js";
-import { pageUsersService } from "/services/PageUsersService.js";
-import { dataAvatars } from "/data/data.js";
-
-export async function renderPageUsersView() {
+async function renderPageUsersView() {
   const app = document.getElementById("app");
-  const page = await fetch("/presentation/html/page_users.html").then(r => r.text());
+  /* For doing with Live Server extension:
+  const page = await fetch("presentation/html/page_users.html").then(r => r.text());
   app.innerHTML = page;
+  */
+  app.innerHTML = `<div class="users-view">
+    <h1>Users</h1>
+
+    <!-- Avatar section -->
+    <div class="avatar-section">
+      <img id="currentAvatar" src="" alt="Your avatar" class="avatar-img">
+      <div id="avatarOptions" class="avatar-options"></div>
+      <button id="saveAvatarBtn">Save Avatar</button>
+    </div>
+
+    <!-- Search users section -->
+    <div class="search-users-section">
+      <input type="text" id="searchUserInput" placeholder="Search users...">
+      <div id="searchResults"></div>
+    </div>
+
+    <!-- Friends list section -->
+    <div class="friends-section">
+      <h2>Your Friends</h2>
+      <div id="friendsList"></div>
+    </div>
+
+    <!-- Friend requests section -->
+    <div class="requests-section">
+      <h2>Friend Requests Received</h2>
+      <div id="friendRequestsList"></div>
+    </div>
+  </div>
+  `;
 
   let user = pageUsersService.getUserById(authService.getCurrentUser().id);
 

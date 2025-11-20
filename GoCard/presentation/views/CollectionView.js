@@ -1,13 +1,14 @@
-import { authService } from "/services/AuthService.js";
-import { packService } from "/services/PackService.js";
-import { cardService } from "/services/CardService.js";
-import { renderUserView } from "./UserView.js";
-
-export async function renderCollectionView() {
+async function renderCollectionView() {
   const app = document.getElementById("app");
 
-  const page = await fetch("/presentation/html/collection.html").then(r => r.text());
-  app.innerHTML = page;
+  // For doing with Live Server extension:
+  // const page = await fetch("presentation/html/collection.html").then(r => r.text());
+  app.innerHTML = `<div class="collections-view">
+        <h1>Your Collections</h1>
+        <div id="collectionsList">
+        </div>
+    </div>
+    `;
 
   // Get current user
   const user = authService.getCurrentUser();

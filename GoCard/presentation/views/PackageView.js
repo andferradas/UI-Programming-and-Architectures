@@ -1,12 +1,22 @@
-import { packService } from "/services/PackService.js";
-import { renderUserView } from "./UserView.js";
-import { renderOpenedCardView } from "./OpenedCardView.js";
-
-export async function renderPackageView(packId) {
+async function renderPackageView(packId) {
     const app = document.getElementById("app");
 
-    const page = await fetch("/presentation/html/package.html").then(r => r.text());
+    /* For doing with Live Server extension:
+    const page = await fetch("presentation/html/package.html").then(r => r.text());
     app.innerHTML = page;
+    */
+    app.innerHTML = `<div class="package-view">
+        <button id="backBtn" class="back-btn-common">⬅ Back</button>
+
+        <h1 id="packTitle"></h1>
+        <img id="packImage" class="pack-big-image" />
+
+        <p id="packtext">This package contains one of the following cards:</p>
+
+        <div id="cardsContainer" class="cards-grid">
+        </div>
+    </div>
+    `;
 
     const pack = packService.getPackageById(packId);
 

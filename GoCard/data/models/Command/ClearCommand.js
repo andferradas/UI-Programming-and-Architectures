@@ -1,7 +1,7 @@
-import { Command } from "./Command.js";
-
-export class Clear extends Command {
+class Clear extends Command {
     execute(ctx) {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }
 }
+
+window.Clear = Clear;

@@ -4,16 +4,48 @@
   <meta charset="UTF-8" />
   <title>GoCard</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/png" href="/assets/GoCard_logo.png"/>
+  <link rel="icon" type="image/png" href="assets/GoCard_logo.png"/>
 </head>
 <body>
   <div id="splash-screen">
-    <img src="/assets/GoCard_logo.png" class="splash-logo" />
+    <img src="assets/GoCard_logo.png" class="splash-logo" />
     <h1 class="splash-title">Welcome to <span>GoCard</span>!</h1>
   </div>
   <header id="header-root"></header>
   <div id="app"></div>
 
-  <script type="module" src="/main.js"></script>
+  <!-- 1. Data layer -->
+  <script src="data/data.js"></script>
+  <script src="data/models/Card.js"></script>
+  <script src="data/models/Package.js"></script>
+  <script src="data/models/Post.js"></script>
+  <script src="data/models/User.js"></script>
+  <script src="data/models/Command/Command.js"></script>
+  <script src="data/models/Command/ClearCommand.js"></script>
+  <script src="data/models/Command/DrawCommand.js"></script>
+
+  <!-- 2. Services layer -->
+  <script src="services/AuthService.js"></script>
+  <script src="services/CardFactory.js"></script>
+  <script src="services/CardService.js"></script>
+  <script src="services/HistoryService.js"></script>
+  <script src="services/PackService.js"></script>
+  <script src="services/PageUsersService.js"></script>
+  <script src="services/PostsService.js"></script>
+
+  <!-- 3. Presentation layer -->
+  <script src="presentation/views/AuthView.js"></script>
+  <script src="presentation/views/CollectionView.js"></script>
+  <script src="presentation/views/CreateCardView.js"></script>
+  <script src="presentation/views/OpenedCardView.js"></script>
+  <script src="presentation/views/PackageView.js"></script>
+  <script src="presentation/views/PageUsersView.js"></script>
+  <script src="presentation/views/PostsView.js"></script>
+  <script src="presentation/views/UserView.js"></script>
+
+  <!-- 4. Entry point -->
+  <script src="app.js"></script>
+  <script src="main.js"></script>
+
 </body>
 </html>

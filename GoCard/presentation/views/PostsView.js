@@ -1,11 +1,22 @@
-import { authService } from "/services/AuthService.js";
-import { postsService } from "/services/PostsService.js";
-import { pageUsersService } from "/services/PageUsersService.js";
-
-export async function renderPostsView() {
+async function renderPostsView() {
     const app = document.getElementById("app");
-    const page = await fetch("/presentation/html/posts.html").then(r => r.text());
+    /* For doing with Live Server extension:
+    const page = await fetch("presentation/html/posts.html").then(r => r.text());
     app.innerHTML = page;
+    */
+    app.innerHTML = `<div class="posts-view">
+        <h1>Posts</h1>
+
+        <div class="posts-tabs">
+            <button id="friendsPostsBtn" class="tab-btn active">Friends Posts</button>
+            <button id="myPostsBtn" class="tab-btn">My Posts</button>
+        </div>
+
+        <button id="createPostBtn" class="create-post-btn">＋ Create Post</button>
+
+        <div id="postsContainer"></div>
+    </div>
+    `;
 
     const user = authService.getCurrentUser();
     const friends = pageUsersService.getFriends(user).map(f => f.id);

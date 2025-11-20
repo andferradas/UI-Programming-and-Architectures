@@ -1,12 +1,61 @@
-import { Draw } from "/data/models/Command/DrawCommand.js";
-import { Clear } from "/data/models/Command/ClearCommand.js";
-import { History } from "/services/HistoryService.js";
-
-export async function renderCreateCardView() {
+async function renderCreateCardView() {
   const app = document.getElementById('app');
 
-  const page = await fetch("/presentation/html/create_card.html").then(r => r.text());
-  app.innerHTML = page;
+  // For doing with Live Server extension:
+  // const page = await fetch("presentation/html/create_card.html").then(r => r.text());
+  app.innerHTML = `<main class="create-card-container">
+    <h1 class="home-title">Create Your Card</h1>
+    <p id="currentDraw">Currently drawing: Rectangle</p>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="tool">
+        <button id="rectBtn" data-tool="rectangle">Rectangle</button>
+        <p class="shortcut">Key: R</p>
+      </div>
+
+      <div class="tool">
+        <button id="circleBtn" data-tool="circle">Circle</button>
+        <p class="shortcut">Key: C</p>
+      </div>
+
+      <div class="tool">
+        <button id="lineBtn" data-tool="line">Line</button>
+        <p class="shortcut">Key: L</p>
+      </div>
+
+      <div class="tool">
+        <input id="colorPicker" type="color" value="#ff0000" />
+        <p id="currentColorText">Current color: #ff0000</p>
+      </div>
+
+      <div class="tool">
+        <button id="undoBtn" data-action="undo">Undo</button>
+        <p class="shortcut">Key: Z</p>
+      </div>
+
+      <div class="tool">
+        <button id="redoBtn" data-action="redo">Redo</button>
+        <p class="shortcut">Key: Y</p>
+      </div>
+
+      <div class="tool">
+        <button id="clearBtn" data-action="clear">Clear</button>
+        <p class="shortcut">Key: X</p>
+      </div>
+    </div>
+
+    <!-- Canvas -->
+    <div id="canvasWrap">
+      <canvas id="drawCanvas" width="500" height="650"></canvas>
+    </div>
+
+    <!-- Save button -->
+    <div class="save-card">
+      <button id="saveCardBtn">Save Card</button>
+    </div>
+  </main>
+  `;
 
   const canvas = document.getElementById('drawCanvas');
   const ctx = canvas.getContext('2d');
@@ -68,11 +117,11 @@ export async function renderCreateCardView() {
   });
 
   document.addEventListener('keydown', (e) => {
-    switch (e.key.toLowerCase()) {
+    switch (e.key?.toLowerCase()) {
       case 'r': currentShape = 'rectangle'; text.textContent = 'Currently drawing: Rectangle'; break;
       case 'c': currentShape = 'circle'; text.textContent = 'Currently drawing: Circle'; break;
       case 'l': currentShape = 'line'; text.textContent = 'Currently drawing: Line'; break;
-      case 'u': document.getElementById('undoBtn').click(); break;
+      case 'z': document.getElementById('undoBtn').click(); break;
       case 'y': document.getElementById('redoBtn').click(); break;
       case 'x': document.getElementById('clearBtn').click(); break;
     }

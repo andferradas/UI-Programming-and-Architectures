@@ -1,27 +1,39 @@
-import { DinosaurCard, SpaceCard } from "/data/models/Card.js";
+// Abstract Creator
+class CardFactory {
+    createCard(cardData) {
+        throw new Error("createCard() must be implemented by subclass");
+    }
+}
 
-export class CardFactory {
-    static create(cardData) {
-        switch (cardData.collectionId) {
-            case 1: // Dinosaur collection
-                return new DinosaurCard(
-                    cardData.id,
-                    cardData.nameCard,
-                    cardData.image,
-                    cardData.rarity,
-                    cardData.collectionId
-                );
+// Concrete Creators
+class DinosaurCardFactory extends CardFactory {
+    createCard(cardData) {
+        return new DinosaurCard(
+            cardData.id,
+            cardData.nameCard,
+            cardData.image,
+            cardData.rarity,
+            cardData.collectionId
+        );
+    }
+}
 
-            case 2: // Space collection
-                return new SpaceCard(
-                    cardData.id,
-                    cardData.nameCard,
-                    cardData.image,
-                    cardData.collectionId
-                );
+class SpaceCardFactory extends CardFactory {
+    createCard(cardData) {
+        return new SpaceCard(
+            cardData.id,
+            cardData.nameCard,
+            cardData.image,
+            cardData.collectionId
+        );
+    }
+}
 
-            default:
-                throw new Error("Collection not found: " + cardData.collectionId);
-        }
+// Factory Method helper
+function getFactory(cardData) {
+    switch(cardData.collectionId) {
+        case 1: return new DinosaurCardFactory();
+        case 2: return new SpaceCardFactory();
+        default: throw new Error("Unknown collectionId: " + cardData.collectionId);
     }
 }

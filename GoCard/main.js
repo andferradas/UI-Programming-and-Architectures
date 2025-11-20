@@ -1,37 +1,4 @@
-// A file with only import statements
-
-// Data layer
-import "/data/data.js";
-import "/data/models/Card.js";
-import "/data/models/Package.js";
-import "/data/models/Post.js";
-import "/data/models/User.js";
-import "/data/models/Command/ClearCommand.js";
-import "/data/models/Command/Command.js";
-import "/data/models/Command/DrawCommand.js";
-
-// Presentation layer
-import "/presentation/views/AuthView.js";
-import "/presentation/views/CollectionView.js";
-import "/presentation/views/CreateCardView.js";
-import "/presentation/views/OpenedCardView.js";
-import "/presentation/views/PackageView.js";
-import "/presentation/views/PageUsersView.js";
-import "/presentation/views/PostsView.js";
-import "/presentation/views/UserView.js";
-
-// Service logic layer
-import "/services/AuthService.js";
-import "/services/CardFactory.js";
-import "/services/CardService.js";
-import "/services/HistoryService.js";
-import "/services/PackService.js";
-import "/services/PageUsersService.js";
-import "/services/PostsService.js";
-
-// App entry point
-import { startApp } from "/app.js";
-
+// For the timer of the splash screen
 window.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     startApp();

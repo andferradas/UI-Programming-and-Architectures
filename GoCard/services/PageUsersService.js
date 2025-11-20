@@ -1,5 +1,3 @@
-import { dataUsers } from "/data/data.js";
-
 class PageUsersService {
   constructor() {
     this.users = [...dataUsers];
@@ -27,6 +25,7 @@ class PageUsersService {
 
   sendFriendRequest(senderId, receiverId) {
     const receiver = this.getUserById(receiverId);
+    receiver.friendRequests = receiver.friendRequests || [];
     if (!receiver.friendRequests.includes(senderId)) {
       receiver.friendRequests.push(senderId);
     }
@@ -34,7 +33,7 @@ class PageUsersService {
 
   getReceivedFriendRequests(userId) {
     const user = this.getUserById(userId);
-    return user.friendRequests.map(id => this.getUserById(id));
+    return (user.friendRequests || []).map(senderId => this.getUserById(senderId));
   }
 
   acceptFriendRequest(userId, senderId) {
@@ -61,13 +60,13 @@ class PageUsersService {
         id: user.id,
         name: user.name,
         avatar: user.avatar,
+        cardsOwned: [],
         friends: [],
-        friendRequestsSent: [],
-        friendRequestsReceived: []
+        friendRequests: []
     });
     localStorage.setItem("page_users", JSON.stringify(this.users));
   }
 
 }
 
-export const pageUsersService = new PageUsersService();
+window.pageUsersService = new PageUsersService();

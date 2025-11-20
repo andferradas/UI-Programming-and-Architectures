@@ -1,4 +1,4 @@
-export class User {
+class User {
     constructor(id, name, email, password, avatar, cardsOwned = [], friends = [], friendsRequests = []) {
         this.id = id;
         this.name = name;
