@@ -10,6 +10,7 @@ import { renderPostsView } from "./PostsView.js";
 export async function renderUserView() {
   const app = document.getElementById('app');
   const headerRoot = document.getElementById('header-root');
+  headerRoot.style.display = "block";
 
   const page = await fetch("/presentation/html/user_home.html").then(r => r.text());
   app.innerHTML = page;
@@ -43,6 +44,9 @@ export async function renderUserView() {
 
   document.getElementById("logoutBtn").addEventListener("click", () => {
     authService.logout();
+    const headerRoot = document.getElementById('header-root');
+    headerRoot.innerHTML = "";  
+    headerRoot.style.display = "none";
     renderLoginView();
   });
 

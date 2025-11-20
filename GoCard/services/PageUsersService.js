@@ -55,6 +55,19 @@ class PageUsersService {
   updateAvatar(user, newAvatarUrl) {
     user.avatar = newAvatarUrl;
   }
+
+  addUser(user) {
+    this.users.push({
+        id: user.id,
+        name: user.name,
+        avatar: user.avatar,
+        friends: [],
+        friendRequestsSent: [],
+        friendRequestsReceived: []
+    });
+    localStorage.setItem("page_users", JSON.stringify(this.users));
+  }
+
 }
 
 export const pageUsersService = new PageUsersService();

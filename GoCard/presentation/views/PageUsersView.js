@@ -117,9 +117,10 @@ export async function renderPageUsersView() {
 
         renderFriends();
         renderFriendRequests();
+
+        searchInput.dispatchEvent(new Event("input"));
       });
     });
-
 
     friendRequestsDiv.querySelectorAll(".rejectRequestBtn").forEach(btn => {
       btn.addEventListener("click", () => {

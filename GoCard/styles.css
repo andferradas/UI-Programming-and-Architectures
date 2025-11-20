@@ -541,6 +541,7 @@ a:hover {
   box-shadow: var(--shadow-hover);
 }
 
+
 /* Main content styling */
 .content-area {
   flex: 1;
@@ -1297,4 +1298,26 @@ a:hover {
     border-radius: var(--radius);
     color: var(--purple-text);
     font-size: 14px;
+}
+
+#layout-root {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar-root {
+  width: 230px;
+  margin-top: 15px;
+}
+
+.sidebar-menu {
+  position: sticky;
+  top: 100px;      /* SEPARACIÓN RESPECTO AL HEADER */
+  padding: 20px;
+  border-radius: 12px;
+}
+
+#app {
+  flex-grow: 1;
+  padding: 20px;
 }
