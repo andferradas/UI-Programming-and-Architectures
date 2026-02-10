@@ -15,6 +15,14 @@ async function renderPostsView() {
         <button id="createPostBtn" class="create-post-btn">＋ Create Post</button>
 
         <div id="postsContainer"></div>
+        <!-- Modal para seleccionar carta -->
+        <div id="cardSelectorModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Select a card to post</h2>
+                <div id="cardSelectorGrid"></div>
+                <button id="closeCardSelector" class="close-btn">Cancel</button>
+            </div>
+        </div>
     </div>
     `;
 
@@ -112,18 +120,41 @@ async function renderPostsView() {
     // Default: show friends posts
     refreshFriendsPosts();
 
-    // Create new post
+    const modal = document.getElementById("cardSelectorModal");
+    const cardGrid = document.getElementById("cardSelectorGrid");
+    const closeBtn = document.getElementById("closeCardSelector");
+
     createPostBtn.addEventListener("click", () => {
         const userCards = user.cardsOwned;
-        const cardId = Number(prompt("Enter the ID of a card you own to post:"));
 
-        if (!userCards.includes(cardId)) {
-            alert("You do not own this card!");
-            return;
-        }
+        // Renderizar cartas del usuario
+        cardGrid.innerHTML = userCards.map(id => {
+            const card = postsService.getCard(id);
+            return `
+                <div class="card-option" data-id="${id}">
+                    <img src="${card.image}">
+                </div>
+            `;
+        }).join("");
 
-        postsService.createPost(user.id, cardId);
-        refreshMyPosts();
+        modal.classList.remove("hidden");
+
+        // Click en una carta → crear post
+        cardGrid.querySelectorAll(".card-option").forEach(cardEl => {
+            cardEl.addEventListener("click", () => {
+                const cardId = Number(cardEl.dataset.id);
+
+                postsService.createPost(user.id, cardId);
+                modal.classList.add("hidden");
+                refreshMyPosts();
+            });
+        });
     });
+
+// Cerrar modal
+closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+});
+
 
 }

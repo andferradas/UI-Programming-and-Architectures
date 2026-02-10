@@ -1320,3 +1320,74 @@ a:hover {
   flex-grow: 1;
   padding: 20px;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+#cardSelectorGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.card-option {
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.card-option:hover {
+    border-color: #007bff;
+}
+.card-option img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.close-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #e5e9ff;
+    color: #2a3faa;
+    border: 2px solid #c3ccff;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #d6ddff;
+    border-color: #b1bbff;
+}
+
+.close-btn:active {
+    transform: scale(0.97);
+}
